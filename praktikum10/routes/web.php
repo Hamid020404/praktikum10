@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
@@ -23,11 +23,12 @@ Route::get('/kabar', function () {
     return view('kondisi');
 });
 
-Route::get('/pasien', function () {
-    return view('pasien');
+Route::get('/nilai', function () {
+    return view('nilai');
 });
 
 Route::get('/admin', [AdminController::class, 'index']);
-
-Route::get('/pegawai', [PegawaiController::class, 'index']);
-
+// pasien
+Route::get('/admin/pasien', [PasienController::class, 'index'])->name('pasiens.index');
+Route::get('/admin/pasien/create', [PasienController::class, 'create'])->name('pasiens.create');
+Route::get('/admin/pasien/store', [PasienController::class, 'store'])->name('pasiens.store');
